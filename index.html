@@ -2,50 +2,65 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>SPS_CH – Exclusão por Data</title>
-  <link rel="stylesheet" href="style.css">
+  <title>SPS_CH – Limpeza</title>
+
+  <style>
+    body {
+      background: #0d1117;
+      color: #c9d1d9;
+      font-family: Consolas, monospace;
+    }
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #161b22;
+      border-radius: 8px;
+    }
+    input, button {
+      width: 100%;
+      margin-top: 8px;
+      padding: 8px;
+    }
+    button {
+      cursor: pointer;
+      font-weight: bold;
+    }
+    pre {
+      margin-top: 15px;
+      background: #010409;
+      padding: 10px;
+      height: 200px;
+      overflow: auto;
+    }
+  </style>
 </head>
+
 <body>
 
 <div class="container">
+  <h2>SPS_CH – Teste de Exclusão</h2>
 
-  <h1>SPS_CH – Limpeza Controlada</h1>
+  <label>Data início</label>
+  <input type="date" id="dataInicio">
 
-  <!-- BLOCO PERÍODO -->
-  <div class="box">
-    <h2>Excluir por período</h2>
+  <label>Data fim</label>
+  <input type="date" id="dataFim">
 
-    <label for="dataInicio">Data inicial</label>
-    <input type="date" id="dataInicio" onclick="this.showPicker()">
+  <button onclick="simular()">Simular</button>
+  <button onclick="excluirPorData()">Excluir por data</button>
+  <button onclick="excluirTudo()">Excluir TUDO</button>
+  <button onclick="baixarJSON()">Baixar JSON</button>
 
-    <label for="dataFim">Data final</label>
-    <input type="date" id="dataFim" onclick="this.showPicker()">
-
-    <div class="actions">
-      <button onclick="simular()">Simular exclusão</button>
-      <button onclick="excluirPorData()">Excluir período</button>
-    </div>
-  </div>
-
-  <!-- BLOCO MASSA -->
-  <div class="box danger">
-    <h2>Exclusão em massa</h2>
-    <button onclick="excluirTudo()">Excluir TODA a base</button>
-  </div>
-
-  <!-- BLOCO EXPORT -->
-  <div class="box">
-    <h2>Backup</h2>
-    <button onclick="baixarJSON()">Baixar JSON atual</button>
-  </div>
-
-  <!-- LOG -->
   <pre id="log"></pre>
-
 </div>
 
-<!-- SCRIPT -->
-<!-- O JS COM FIREBASE QUE VOCÊ JÁ TEM -->
+<!-- 🔥 Firebase SDKs (OBRIGATÓRIO AQUI) -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
+
+<!-- 🔥 SEU SCRIPT -->
 <script src="script.js"></script>
 
 </body>
