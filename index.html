@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>SPS_CH – Limpeza de Base</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h1>SPS_CH – Exclusão Controlada</h1>
+
+  <div class="box">
+    <h2>Excluir por período</h2>
+
+    <label>Data inicial</label>
+    <input type="date" id="dataInicio">
+
+    <label>Data final</label>
+    <input type="date" id="dataFim">
+
+    <button onclick="simular()">Simular exclusão</button>
+    <button onclick="excluirPorData()">Excluir</button>
+  </div>
+
+  <div class="box danger">
+    <h2>Exclusão em massa</h2>
+    <button onclick="excluirTudo()">Excluir TODA a base</button>
+  </div>
+
+  <div class="box">
+    <button onclick="baixarJSON()">Baixar JSON limpo</button>
+  </div>
+
+  <pre id="log"></pre>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
