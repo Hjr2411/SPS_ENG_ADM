@@ -2,36 +2,92 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>SPS_CH – Limpeza</title>
+  <title>SPS_CH – Limpeza de Base</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
       background: #0d1117;
       color: #c9d1d9;
       font-family: Consolas, monospace;
+      margin: 0;
+      padding: 0;
     }
+
     .container {
-      max-width: 700px;
+      max-width: 720px;
       margin: 40px auto;
       padding: 20px;
       background: #161b22;
       border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,.4);
     }
-    input, button {
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    input[type="date"] {
       width: 100%;
-      margin-top: 8px;
       padding: 8px;
+      margin-top: 5px;
+      background: #0d1117;
+      border: 1px solid #30363d;
+      color: #c9d1d9;
+      border-radius: 4px;
     }
+
     button {
-      cursor: pointer;
-      font-weight: bold;
-    }
-    pre {
-      margin-top: 15px;
-      background: #010409;
+      width: 100%;
       padding: 10px;
-      height: 200px;
-      overflow: auto;
+      margin-top: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      background: #238636;
+      color: #fff;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .danger {
+      background: #da3633;
+    }
+
+    .danger:hover {
+      opacity: 0.9;
+    }
+
+    .actions {
+      margin-top: 15px;
+    }
+
+    pre {
+      margin-top: 20px;
+      padding: 10px;
+      background: #010409;
+      height: 220px;
+      overflow-y: auto;
+      font-size: 12px;
+      border-radius: 4px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 11px;
+      margin-top: 20px;
+      opacity: 0.6;
     }
   </style>
 </head>
@@ -39,28 +95,46 @@
 <body>
 
 <div class="container">
-  <h2>SPS_CH – Teste de Exclusão</h2>
 
-  <label>Data início</label>
-  <input type="date" id="dataInicio">
+  <h1>SPS_CH – Exclusão Controlada</h1>
 
-  <label>Data fim</label>
-  <input type="date" id="dataFim">
+  <!-- BLOCO PERÍODO -->
+  <label for="dataInicio">Data inicial</label>
+  <input type="date" id="dataInicio" onclick="this.showPicker()">
 
-  <button onclick="simular()">Simular</button>
-  <button onclick="excluirPorData()">Excluir por data</button>
-  <button onclick="excluirTudo()">Excluir TUDO</button>
-  <button onclick="baixarJSON()">Baixar JSON</button>
+  <label for="dataFim">Data final</label>
+  <input type="date" id="dataFim" onclick="this.showPicker()">
 
+  <div class="actions">
+    <button onclick="simular()">Simular exclusão</button>
+    <button onclick="excluirPorData()">Excluir período</button>
+  </div>
+
+  <!-- BLOCO MASSA -->
+  <div class="actions">
+    <button class="danger" onclick="excluirTudo()">Excluir TODA a base</button>
+  </div>
+
+  <!-- BLOCO BACKUP -->
+  <div class="actions">
+    <button onclick="baixarJSON()">Baixar backup JSON</button>
+  </div>
+
+  <!-- LOG -->
   <pre id="log"></pre>
+
+  <footer>
+    SPS_CH · Operação segura · Client-side + Firebase
+  </footer>
+
 </div>
 
-<!-- 🔥 Firebase SDKs (OBRIGATÓRIO AQUI) -->
+<!-- 🔥 Firebase SDKs -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
 
-<!-- 🔥 SEU SCRIPT -->
+<!-- 🔥 Seu JS -->
 <script src="script.js"></script>
 
 </body>
